@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <util/delay.h>
 
-#define F_CPU 16000000
+#define F_CPU 16000000L
 
 
 void setup_wheels();
