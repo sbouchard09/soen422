@@ -29,8 +29,11 @@ int get_adc_value() {
     return value;
 }
 
-/* interrupt */
-ISR (SPI_STC_vect) { // gets triggered each time master sends a value
+/* interrupt
+ * gets triggered each time master sends a value
+ * reads values from sensors and determines which direction to turn
+ */
+ISR (SPI_STC_vect) {
   byte c = SPDR;
 
   int value_left = 0;
