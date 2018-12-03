@@ -74,7 +74,7 @@ void turn_left(){
 /*
  Right wheels are set to go forward and Left wheels are set to go backwards
 */
-void turn_rigth(){
+void turn_right(){
 	//Front Left Wheel
 	PORTD &= ~(1 << PD4);
 	PORTD |= (1 << PD5);
@@ -106,7 +106,7 @@ int main(void) {
 		move_forward();
 		_delay_ms(1000);
 
-		/*turn_rigth();
+		/*turn_right();
 		_delay_ms(1000);
 
 		turn_left();

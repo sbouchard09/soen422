@@ -9,5 +9,5 @@ void setup_wheels();
 void move_forward();
 void move_backward();
 void turn_left();
-void turn_rigth();
+void turn_right();
 

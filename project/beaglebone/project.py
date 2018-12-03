@@ -1,7 +1,7 @@
-#import struct, fcntl, os
-#import Adafruit_BBIO.GPIO as GPIO
+#not sure how to get this working
+import Adafruit_BBIO.SPI as SPI
 
-def get_distance(fd):
+def get_direction(fd):
     # returns value from sensor
     return
 
