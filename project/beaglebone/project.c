@@ -24,7 +24,7 @@ void send_direction(int fd, uint8_t t) {
 uint8_t get_direction(fd) {
   int status;
   uint8_t tx = 1;
-  uint8_t rx = 1; // initialize rx
+  uint8_t rx = 1; // initialize rx (will receive direction from arduino)
   /*
    * from spidev.h:
    * spi_ioc_transfer describes a single SPI transfer
@@ -37,6 +37,7 @@ uint8_t get_direction(fd) {
     .delay_usecs = 0, // no delay
     .bits_per_word = 1
   }
+  status = ioctl(fd, SPI_IOC_MESSAGE(1_, &send)); // syscall: ioctl(fd, request), request is an SPI transaction in this case
   return rx; // return received direction
 }
 

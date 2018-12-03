@@ -38,24 +38,24 @@ int get_adc_value() {
 ISR (SPI_STC_vect) {
   byte c = SPDR;
 
-  int value_left = 0;
-  int value_right = 0;
-  // set ADMUX to read from left sensor
+  int value_front = 0;
+  int value_back = 0;
+  // set ADMUX to read from front sensor
   ADMUX &= ~(1 << MUX0);
-  value_left = get_adc_value();         // get adc value from left sensor
-  Serial.println(value_left);           // debugging
+  value_front = get_adc_value();        // get adc value from front sensor
+  Serial.println(value_front);        // debugging
   // set ADMUX to read from right sensor
   ADMUX |= (1 << MUX0);
-  value_right = get_adc_value();        // get adc value from right sensor
-  Serial.println(value_right);          // debugging
-  if(value_left < value_right) {        // obstacle closer to left side
-    Serial.println("turn right");       // debugging
+  value_back = get_adc_value();         // get adc value from back sensor
+  Serial.println(value_back);           // debugging
+  if(value_back < value_front) {        // obstacle closer to back side
+    Serial.println("go forward");       // debugging
     SPDR = 1;
         //send_value(1); // turn right
         //delayMicroseconds(20);
         //send_value(value_left);
-  } else if(value_left > value_right) { // obstacle closer to right side
-    Serial.println("turn left");        // debugging
+  } else if(value_back > value_front) { // obstacle closer to front side
+    Serial.println("go backward");      // debugging
     SPDR = 2;
         //send_value(2); // turn left
         //delayMicroseconds(20);
